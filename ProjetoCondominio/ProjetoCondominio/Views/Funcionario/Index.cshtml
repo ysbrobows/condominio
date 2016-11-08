@@ -1,0 +1,53 @@
+﻿FUNCIONARIOS
+
+<div ng-controller="FuncionarioController" class="row">
+    <div>
+        Nome<input class="form-control" type="text" ng-model="funcionario.Nome_Funcionario" />
+        CPF<input class="form-control" type="text" ng-model="funcionario.CPF" />
+        Email<input class="form-control" type="text" ng-model="funcionario.Email" />
+        Telefone<input class="form-control" type="text" ng-model="funcionario.Telefone" />
+
+        Rua <select ng-change="ListarCasas()" class="form-control" id="rua" ng-model="funcionario.Id_Rua"
+                    ng-options="rua.ID as (rua.Rua | uppercase) for rua in Ruas">
+            <option value="">Rua</option>
+        </select>
+        Casa <select ng-disabled="!funcionario.Id_Rua" class="form-control" ng-model="funcionario.Id_Casa"
+                     ng-options="casa.ID as casa.Casa for casa in Casas">
+            <option value="">Casa</option>
+        </select>
+        <br />
+
+        <input class="btn btn-default" type="button" value="Salvar" ng-show="!funcionario.ID" ng-click="SalvarFuncionario()" />
+        <input class="btn btn-default" type="button" value="Editar" ng-show="funcionario.ID" ng-click="SalvarFuncionario()" />
+    </div>
+    <br />
+
+    <table class="table table-striped" style="width:100%" ng-show="Funcionarios">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Rua</th>
+            <th>Casa</th>
+            <th>Excluir</th>
+            <th>Editar</th>
+        </tr>
+        <tr ng-repeat="x in Funcionarios">
+            <td>{{x.ID}}</td>
+            <td>{{x.Nome_Funcionario}}</td>
+            <td>{{x.CPF}}</td>
+            <td>{{x.Email}}</td>
+            <td>{{x.Telefone}}</td>
+            <td>{{x.Rua | uppercase}}</td>
+            <td>{{x.Casa}}</td>
+            <td ng-click="DeletarFuncionario(x.ID)"><span class="glyphicon glyphicon-remove"></span></td>
+            <td ng-click="EditarFuncionario(x)"><span class="glyphicon glyphicon-pencil"></span></td>
+    </table>
+
+
+
+</div>
+
+<script src="~/Scripts/Controller/controllerFuncionario.js"></script>

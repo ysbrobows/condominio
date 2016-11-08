@@ -1,0 +1,39 @@
+﻿CASAS
+
+
+<div ng-controller="CasaController" class="row">
+    <div>
+        Casa<input class="form-control" type="text" id="casa" ng-model="casa.Casa" />
+        Rua <select ng-change="ListarCasas()" class="form-control" id="rua" ng-model="casa.Id_Rua"
+                    ng-options="rua.ID as rua.Rua for rua in Ruas">
+            <option value="">Rua</option>
+        </select>
+        <br />
+
+        <input class="btn btn-default" type="button" value="Salvar" ng-show="!casa.ID" ng-click="SalvarCasa()" />
+        <input class="btn btn-default" type="button" value="Editar" ng-show="casa.ID" ng-click="SalvarCasa()" />
+        <input class="btn btn-default" type="button" value="Listar Todos" ng-click="ListarTodos()" />
+    </div>
+    <br />
+
+    <table class="table table-striped" style="width:100%" ng-show="casa.Id_Rua">
+        <tr>
+            <th>Id</th>
+            <th>Rua <span class="glyphicon glyphicon-sort-by-alphabet"></span></th> 
+            <th>Casa <span class="glyphicon glyphicon-sort-by-order"></span></th>  
+            <th>Excluir</th>     
+            <th>Editar</th>       
+        </tr>
+        <tr ng-repeat="x in Casas">
+            <td>{{x.ID}}</td>
+            <td>{{x.Rua}}</td>
+            <td>{{x.Casa}}</td>            
+            <td ng-click="DeletarCasa(x.ID)"><span class="glyphicon glyphicon-remove"></span></td>
+            <td ng-click="EditarCasa(x)"><span class="glyphicon glyphicon-pencil"></span></td>
+    </table>
+
+
+
+</div>
+
+<script src="~/Scripts/Controller/controllerRua.js"></script>

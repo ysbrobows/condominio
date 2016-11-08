@@ -1,0 +1,30 @@
+﻿Rua
+
+<div ng-controller="RuaController" class="row">
+    <div>
+    Rua<input class="form-control" type="text" ng-model="rua.Rua" />
+    <br />
+    <input class="btn btn-default" type="button" value="Salvar" ng-show="!rua.ID" ng-click="SalvarRua()"/>
+    <input class="btn btn-default" type="button" value="Editar" ng-show="rua.ID" ng-click="SalvarRua()"/>
+              <br/>
+    </div>
+    <br />
+    <table class="table table-striped" style="width:100%" ng-show="Ruas">
+        <tr>
+            <th>Id</th>
+            <th>Rua</th>
+            <th>Excluir</th>
+            <th>Editar</th>
+        </tr>
+        <tr ng-repeat="x in Ruas">
+            <td>{{x.ID}}</td>
+            <td>{{x.Rua}}</td>            
+                        
+            <td ng-click="DeletarRua(x.ID)"><span class="glyphicon glyphicon-remove"></span></td>
+            <td ng-click="EditarRua(x)"><span class="glyphicon glyphicon-pencil"></span></td>
+         </tr>
+    </table>
+
+</div>
+
+<script src="~/Scripts/Controller/controllerRua.js"></script>

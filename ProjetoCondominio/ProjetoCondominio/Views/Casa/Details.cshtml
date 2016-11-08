@@ -1,0 +1,34 @@
+﻿@model ProjetoCondominio.Models.tbl_Casa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_Casa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Rua.Rua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Rua.Rua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Casa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
